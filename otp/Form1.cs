@@ -153,13 +153,17 @@ namespace otp
             content.Text = "";
             for (int i = 0; i < dim[1]; i++)
             {
+                string build = "";
+
                 for (int j = 0; j < dim[0]; j++)
                 {
-                    content.Text += vals[i * Convert.ToInt32(dim[0]) + j].ToString("D" + dim[2].ToString());
+                    build += vals[i * Convert.ToInt32(dim[0]) + j].ToString("D" + dim[2].ToString());
 
                     if (j != dim[0] - 1)
-                        content.Text += " ";
+                        build += " ";
                 }
+
+                content.Text += build;
 
                 if (i != dim[1] - 1)
                     content.Text += "\r\n";
