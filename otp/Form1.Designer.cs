@@ -32,6 +32,7 @@
             this.dimension = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.start = new System.Windows.Forms.Button();
+            this.valuesps = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.valuesps);
             this.panel1.Controls.Add(this.start);
             this.panel1.Controls.Add(this.dimension);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -73,6 +75,15 @@
             this.start.Text = "Go";
             this.start.UseVisualStyleBackColor = true;
             this.start.Click += new System.EventHandler(this.start_Click);
+            // 
+            // valuesps
+            // 
+            this.valuesps.Dock = System.Windows.Forms.DockStyle.Top;
+            this.valuesps.Location = new System.Drawing.Point(100, 0);
+            this.valuesps.Name = "valuesps";
+            this.valuesps.Size = new System.Drawing.Size(481, 20);
+            this.valuesps.TabIndex = 3;
+            this.valuesps.Text = "1 values per movement (1-4)";
             // 
             // Form1
             // 
@@ -97,6 +108,7 @@
         private System.Windows.Forms.TextBox dimension;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button start;
+        private System.Windows.Forms.TextBox valuesps;
     }
 }
 

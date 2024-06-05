@@ -44,6 +44,7 @@ namespace otp
         bool generating = false;
         bool halt = false;
 
+        int rate = 1;
         uint[] dim = { 0, 0, 0 };
         List<uint> vals = new List<uint>();
 
@@ -95,8 +96,10 @@ namespace otp
                     info.pos.x.ToString() + info.pos.y.ToString() + DateTime.Now.Ticks.ToString()
                 ));
 
-                uint val = BitConverter.ToUInt32(data, 0) % pow(10, dim[2]);
-                vals.Add(val);
+                for (int i = 0; i < rate; i++)
+                {
+                    vals.Add(BitConverter.ToUInt32(data, i*4) % pow(10, dim[2]));
+                }
                 start.Text = "Move your mouse\r\n" + (vals.Count * 100 / (dim[0] * dim[1])) + "%";
 
                 if (vals.Count >= dim[0] * dim[1])
@@ -142,6 +145,7 @@ namespace otp
             start.Text = "Move your mouse";
 
             dim = dimension.Text.Split('x').Select((x) => uint.Parse(x)).ToArray();
+            rate = int.Parse(valuesps.Text.Split(' ')[0]);
 
             startListening();
         }
@@ -163,10 +167,10 @@ namespace otp
                         build += " ";
                 }
 
-                content.Text += build;
-
                 if (i != dim[1] - 1)
-                    content.Text += "\r\n";
+                    build += "\r\n";
+
+                content.Text += build;
             }
 
             vals.Clear();
